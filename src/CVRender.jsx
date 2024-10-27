@@ -102,38 +102,53 @@ function CVRender({ data }) {
           </div>
         </div>
       </div>
-      <hr />
-      <div className="education">
-        <h2>Education</h2>
-        <div>
-          {Object.entries(data.education).map(([key, entry]) => (
-            <div key={key}>
-              {renderDate(entry.startDate, entry.endDate)}
-              <div>
-                <h3>{entry.school}</h3>
-                {entry.degree ? <p>{entry.degree}</p> : ""}
-                {entry.experience ? <p>{entry.experience}</p> : ""}
-              </div>
+
+      {Object.keys(data.education).length ? (
+        <>
+          <hr />
+          <div className="education">
+            <h2>Education</h2>
+            <div>
+              {Object.entries(data.education).map(([key, entry]) => (
+                <div key={key}>
+                  {renderDate(entry.startDate, entry.endDate)}
+                  <div>
+                    <h3>{entry.school}</h3>
+                    {entry.degree ? <p>{entry.degree}</p> : ""}
+                    {entry.experience ? <p>{entry.experience}</p> : ""}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-      <hr />
-      <div className="experience">
-        <h2>Experience</h2>
-        <div>
-          {Object.entries(data.experience).map(([key, entry]) => (
-            <div key={key}>
-              {renderDate(entry.startDate, entry.endDate)}
-              <div>
-                <h3>{entry.company}</h3>
-                {entry.role ? <p>{entry.role}</p> : ""}
-                {entry.description ? <p>{entry.description}</p> : ""}
-              </div>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+
+      {Object.keys(data.experience).length ? (
+        <>
+          <hr />
+          <div className="experience">
+            <h2>Experience</h2>
+            <div>
+              {Object.entries(data.experience).map(([key, entry]) => (
+                <div key={key}>
+                  {renderDate(entry.startDate, entry.endDate)}
+                  <div>
+                    <h3>{entry.company}</h3>
+                    {entry.role ? <p>{entry.role}</p> : ""}
+                    {entry.description ? <p>{entry.description}</p> : ""}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+
       <hr />
       <div id="GDPRClause">
         I hereby give consent for my personal data to be processed and stored
