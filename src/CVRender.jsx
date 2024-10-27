@@ -47,12 +47,16 @@ function CVRender({ data }) {
         {data.general.jobTitle ? <h2>{data.general.jobTitle}</h2> : ""}
         <div>
           <div>
-            <p>
-              <a href={"mailto:" + data.general.email}>
-                <MailIcon />
-                {data.general.email}
-              </a>
-            </p>
+            {data.general.email ? (
+              <p>
+                <a href={"mailto:" + data.general.email}>
+                  <MailIcon />
+                  {data.general.email}
+                </a>
+              </p>
+            ) : (
+              ""
+            )}
             {data.general.phone ? (
               <p>
                 <a href={"tel:" + data.general.phone}>
