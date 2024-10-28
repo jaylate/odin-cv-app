@@ -81,9 +81,17 @@ function CVRender({ data }) {
             )}
             {data.general.github ? (
               <p>
-                <a href={data.general.github}>
+                <a
+                  href={
+                    data.general.github.startsWith("http")
+                      ? data.general.github
+                      : data.general.github.startsWith("github.com")
+                        ? "https://" + data.general.github
+                        : "https://github.com/" + data.general.github
+                  }
+                >
                   <GithubIcon />
-                  {data.general.github.replace(/^https?\:\/\//i, "")}
+                  {data.general.github.replace(/^(https?\:\/\/)?.*\//i, "")}
                 </a>
               </p>
             ) : (
@@ -91,9 +99,20 @@ function CVRender({ data }) {
             )}
             {data.general.linkedin ? (
               <p>
-                <a href={data.general.linkedin}>
+                <a
+                  href={
+                    data.general.linkedin.startsWith("http")
+                      ? data.general.linkedin
+                      : data.general.linkedin.startsWith("linkedin.com")
+                        ? "https://" + data.general.linkedin
+                        : "https://linkedin.com/in/" + data.general.linkedin
+                  }
+                >
                   <LinkedinIcon />
-                  {data.general.linkedin.replace(/^https?\:\/\//i, "")}
+                  {data.general.linkedin.replace(
+                    /^(https?\:\/\/)?.*(\/in)?\//i,
+                    "",
+                  )}
                 </a>
               </p>
             ) : (
