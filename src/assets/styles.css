@@ -130,6 +130,9 @@ button {
       > div {
         display: grid;
         grid-template-columns: 1fr 3fr;
+        .section-content {
+          word-break: break-word;
+        }
       }
     }
   }

@@ -112,7 +112,7 @@ function CVRender({ data }) {
               {Object.entries(data.education).map(([key, entry]) => (
                 <div key={key}>
                   {renderDate(entry.startDate, entry.endDate)}
-                  <div>
+                  <div className="section-content">
                     <h3>{entry.school}</h3>
                     {entry.degree ? <p>{entry.degree}</p> : ""}
                     {entry.experience ? <p>{entry.experience}</p> : ""}
@@ -135,7 +135,7 @@ function CVRender({ data }) {
               {Object.entries(data.experience).map(([key, entry]) => (
                 <div key={key}>
                   {renderDate(entry.startDate, entry.endDate)}
-                  <div>
+                  <div className="section-content">
                     <h3>{entry.company}</h3>
                     {entry.role ? <p>{entry.role}</p> : ""}
                     {entry.description ? <p>{entry.description}</p> : ""}
