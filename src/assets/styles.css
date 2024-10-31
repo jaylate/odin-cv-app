@@ -11,7 +11,8 @@ body {
   --theme-delete-color-bg: #c93448;
 
   margin: 0px;
-  padding: 20px 200px;
+  padding: 2% 15%;
+
   background-color: #f3f4f6;
 
   font-family: "Roboto", sans-serif;
@@ -142,12 +143,28 @@ button {
   }
 }
 
+@media (max-width: 1500px) {
+  #root {
+    padding: 2% 10%;
+  }
+}
+
+@media (max-width: 1200px) {
+  #content {
+    display: block !important;
+  }
+  .hidden-on-mobile {
+    display: none !important;
+  }
+}
+
 @media print {
   #root {
     background-color: white;
   }
 
   #render {
+    display: block;
     box-shadow: none;
     border-radius: 0;
   }

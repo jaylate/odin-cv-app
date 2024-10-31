@@ -85,7 +85,7 @@ function CVEdit({ data, onDataChange }) {
   }
 
   return (
-    <div id="edit">
+    <div id="edit" className="hidden-on-mobile">
       <div className="general">
         <h2>General information</h2>
         <label htmlFor="gdprCheckbox">
@@ -203,14 +203,27 @@ function CVApp({ data }) {
         <button
           id="toggleEdit"
           onClick={() => {
+            // FIXME: rewrite this in cleaner way
             var editDiv = document.getElementById("edit");
+            var renderDiv = document.getElementById("render");
             var contentDiv = document.getElementById("content");
-            if (editDiv.style.display == "none") {
+            var mediaIsSmall = window.matchMedia("(max-width: 1200px)").matches;
+
+            if (window.getComputedStyle(editDiv).display == "none") {
               editDiv.style.display = "block";
-              contentDiv.style.display = "grid";
+              if (!mediaIsSmall) contentDiv.style.display = "grid";
+              else {
+                renderDiv.classList.add("hidden-on-mobile");
+                editDiv.classList.remove("hidden-on-mobile");
+              }
             } else {
-              editDiv.style.display = "none";
+              if (mediaIsSmall) {
+                editDiv.classList.add("hidden-on-mobile");
+                renderDiv.classList.remove("hidden-on-mobile");
+              } else editDiv.style.display = "none";
+
               contentDiv.style.display = "block";
+              renderDiv.style.display = "block";
             }
           }}
         >
